@@ -11,9 +11,9 @@ print(a * b / c)
 end = timer()
 
 
-def getDuration():
+def get_duration():
     duration = (timedelta(seconds=end - start)).total_seconds()
     print(f'Executed in: {duration}' + ' second(s)')
 
 
-getDuration()
+get_duration()
