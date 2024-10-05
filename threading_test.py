@@ -7,7 +7,6 @@ thread_list = [1, 2, 3, 4, 5]
 
 def thread_function(name):
     logging.info("Thread %s: starting", name)
-    time.sleep(1)
     logging.info("Thread %s: finishing", name)
 
 
@@ -23,7 +22,9 @@ def loop():
         x.start()
         logging.info("Wait for the thread to finish")
         x.join()
-        logging.info("All done")
+        logging.info(f"Thread {i} is finished.")
+
+    print('Entire process has finished.')
 
 
 loop()
