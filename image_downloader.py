@@ -1,11 +1,9 @@
 import urllib.request
 
 images = [
-    {'name': 'image_1', 'url': 'https://i.imgur.com/vgZrB5U.jpeg'},
-    {'name': 'image_2', 'url': 'https://i.imgur.com/ZccahuC.jpeg'},
-    {'name': 'image_3', 'url': 'https://i.imgur.com/O3lUGTr.jpeg'},
-    {'name': 'image_4', 'url': 'https://i.imgur.com/HwIbeq1.jpeg'},
-    {'name': 'image_5', 'url': 'https://i.imgur.com/NuqugTD.jpeg'},
+    {'name': 'image_1', 'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/A-Cat.jpg/2560px-A-Cat.jpg'},
+    {'name': 'image_2', 'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Cat_img.jpg/1280px-Cat_img.jpg'},
+    {'name': 'image_3', 'url': 'https://images.squarespace-cdn.com/content/v1/5452d441e4b0c188b51fef1a/1615326541809-TW01PVTOJ4PXQUXVRLHI/male-orange-tabby-cat.jpg'},
 ]
 
 
@@ -25,4 +23,7 @@ save_as = 'images/cat.jpg'
 
 if __name__ == '__main__':
     for x in images:
-        print(x)
+        url = x['url']
+        file_name = x['name']
+        file_path = 'images/'
+        dl(url, file_name, file_path)
