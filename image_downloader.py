@@ -13,12 +13,14 @@ def download_images(url, file_name, file_path):
     full_path = 'images/' + file_name + '.jpg'
     urllib.request.urlretrieve(url, full_path)
 
+
 if __name__ == '__main__':
     for x in images:
         url = x['url']
         file_name = x['name']
         file_path = 'images/'
         download_images(url, file_name, file_path)
+
 
 def dl(url, save_as):
     urllib.request.urlretrieve(url, save_as)
