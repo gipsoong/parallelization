@@ -34,43 +34,21 @@ images = [
 ]
 
 
-def download_images(url, file_name, file_path):
+def download(images):
+    file_name = images['name']
     full_path = 'images/' + file_name + '.jpg'
-    urllib.request.urlretrieve(url, full_path)
+    urllib.request.urlretrieve(images['url'], full_path)
 
 
-def prev():
+if __name__ == '__main__':
     start = timer()
 
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO,
                         datefmt="%H:%M:%S")
 
-    for x in images:
-        url = x['url']
-        file_name = x['name']
-        file_path = 'images/'
-        download_images(url, file_name, file_path)
-
-    end = timer()
-    duration = (timedelta(seconds=end - start)).total_seconds()
-
-    print(f'Entire process has finished in {duration} second(s).')
-
-
-def new():
-    count = 0
-    for i in images:
-        count += 1
-
-    start = timer()
-
-    format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO,
-                        datefmt="%H:%M:%S")
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=count) as executor:
-        executor.map(download_images(), range(3))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+        executor.map(download, images)
 
     end = timer()
     duration = (timedelta(seconds=end - start)).total_seconds()
