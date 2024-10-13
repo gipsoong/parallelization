@@ -1,13 +1,12 @@
 images = [
     'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_November_2010-1a.jpg',
     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/640px-Cat_August_2010-4.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Domestic_cat_felis_catus.jpg/640px-Domestic_cat_felis_catus.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Domestic_cat_felis_catus.jpg/640px'
+    '-Domestic_cat_felis_catus.jpg',
     'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Domestic_cat_2019_G1.jpg/640px-Domestic_cat_2019_G1.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Curious_cat_starring_at_a_lizard.jpg/640px-Curious_cat_starring_at_a_lizard.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Curious_cat_starring_at_a_lizard.jpg/640px'
+    '-Curious_cat_starring_at_a_lizard.jpg',
     'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Domestic_cat_cropped.jpg/640px-Domestic_cat_cropped.jpg'
-
-
-
 ]
 
 videos = [

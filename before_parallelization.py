@@ -82,4 +82,46 @@ def image():
     print(f'Entire process has finished in {duration} second(s).')
 
 
-download_video_single_threaded()
+# download_video_single_threaded()
+
+
+def download(item, file_name, directory, file_format):
+    full_path = directory + file_name + file_format
+    urllib.request.urlretrieve(item, full_path)
+
+
+def single_threaded_download(items, file_format):
+    start = timer()
+
+    format = "%(asctime)s: %(message)s"
+    logging.basicConfig(format=format, level=logging.INFO,
+                        datefmt="%H:%M:%S")
+
+    counter = 1
+
+    for i in items:
+        directory = ''
+        if file_format == '.jpg':
+            directory = 'images/'
+        else:
+            directory = 'videos/'
+
+        file_name = i.split('/')[-1]
+
+        logging.info("Before creating thread")
+        thread = threading.Thread(target=download, args=(i, file_name, directory, file_format))
+        logging.info("Before running thread")
+        thread.start()
+        logging.info("Wait for the thread to finish")
+        thread.join()
+        logging.info(f"Thread {counter} is finished.")
+
+        counter += 1
+
+    end = timer()
+    duration = (timedelta(seconds=end - start)).total_seconds()
+
+    print(f'Entire process has finished in {duration} second(s).')
+
+
+single_threaded_download(list_of_images, '.jpg')
