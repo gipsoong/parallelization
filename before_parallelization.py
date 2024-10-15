@@ -1,9 +1,10 @@
 import logging
 import threading
 import time
+import requests
+import urllib.request
 from timeit import default_timer as timer
 from datetime import timedelta
-import urllib.request
 from data import *
 
 list_of_images = images
@@ -86,6 +87,11 @@ def image():
 
 
 def download(item, file_name, directory, file_format):
+    # Code to send a response so the program does not get hit with a limit
+    url = item
+    headers = {'User-Agent': 'Media Downloader (for a school project) (https://github.com/gipsoong/parallelization)'}
+    response = requests.get(url, headers=headers)
+
     full_path = directory + file_name + file_format
     urllib.request.urlretrieve(item, full_path)
 
@@ -124,4 +130,4 @@ def single_threaded_download(items, file_format):
     print(f'Entire process has finished in {duration} second(s).')
 
 
-single_threaded_download(list_of_images, '.jpg')
+# single_threaded_download(list_of_images, '.jpg')
