@@ -31,7 +31,7 @@ def download_videos(item):
     urllib.request.urlretrieve(item, full_path)
 
 
-def multi_threaded_download(items, file_format):
+def multi_threaded_download(items, file_format, cores):
     start = timer()
 
     format = "%(asctime)s: %(message)s"
@@ -39,10 +39,10 @@ def multi_threaded_download(items, file_format):
                         datefmt="%H:%M:%S")
 
     if file_format == '.jpg':
-        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=cores) as executor:
             executor.map(download_images, items)
     else:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=cores) as executor:
             executor.map(download_videos, items)
 
     end = timer()
