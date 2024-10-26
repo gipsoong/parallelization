@@ -5,8 +5,7 @@ import urllib.request
 import requests
 import concurrent.futures
 from data import *
-
-list_of_videos = videos
+import zipfile
 
 
 def download_images(item):
@@ -50,4 +49,23 @@ def multi_threaded_download(items, file_format, cores):
 
     print(f'Entire process has finished in {duration} second(s).')
 
-# multi_threaded_download(list_of_videos, '.webm')
+
+def zip_files(items):
+    with zipfile.ZipFile("videos.zip", mode="w") as archive:
+        archive.write(items)
+
+
+def multi_threaded_zip(items, cores):
+    start = timer()
+
+    format = "%(asctime)s: %(message)s"
+    logging.basicConfig(format=format, level=logging.INFO,
+                        datefmt="%H:%M:%S")
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=cores) as executor:
+        executor.map(zip_files, items)
+
+    end = timer()
+    duration = (timedelta(seconds=end - start)).total_seconds()
+
+    print(f'Entire process has finished in {duration} second(s).')
